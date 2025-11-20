@@ -21,7 +21,8 @@ async def create_recommendations(
 
     logger.info("Received payload for chatId=%s", payload.chatId)
 
-    text = generate_recommendations_text(payload)
+    #text = generate_recommendations_text(payload)
+    text = "Все будет хорошо"
     pdf_bytes = render_text_to_pdf(text)
 
     headers = {

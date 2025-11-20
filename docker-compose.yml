@@ -28,7 +28,7 @@ services:
       # сертификаты
       - ./nginx/certs:/etc/nginx/certs:ro
       # опционально: логи
-      #- ./nginx/logs:/var/log/nginx
+      - ./nginx/logs:/var/log/nginx
     restart: unless-stopped
     networks:
       - ai-net
