@@ -1,6 +1,7 @@
 fastapi
 uvicorn[standard]
 pydantic
+pydantic_settings
 reportlab
 openai
 python-dotenv
