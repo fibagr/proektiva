@@ -3,7 +3,7 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     openai_api_key: str
-    bot_api_key: str | None = None  # общий секрет с ботом
+    bot_api_key: str | None = None  # общий секрет с  ботом
     app_name: str = "AI Recommendation Module"
     environment: str = "prod"
 
