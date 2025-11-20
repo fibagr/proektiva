@@ -8,8 +8,9 @@ services:
       dockerfile: Dockerfile
     env_file:
       - .env
-    expose:
-      - "8000"            # только внутри docker-сети
+    #expose:
+    #  - "8000"            # только внутри docker-сети
+    ports: []
     restart: unless-stopped
     networks:
       - ai-net
@@ -29,7 +30,7 @@ services:
       # сертификаты
       - ./nginx/certs:/etc/nginx/certs:ro
       # опционально: логи
-      - ./nginx/logs:/var/log/nginx
+      #- ./nginx/logs:/var/log/nginx
     networks:
       - ai-net
     healthcheck:
