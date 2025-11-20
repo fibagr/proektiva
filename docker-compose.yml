@@ -16,7 +16,8 @@ services:
 
   nginx:
     container_name: ai-nginx
-    image: nginx:alpine
+    image: nginx:1.27-alpine
+    restart: unless-stopped
     depends_on:
       - ai-module
     ports:
@@ -29,7 +30,6 @@ services:
       - ./nginx/certs:/etc/nginx/certs:ro
       # опционально: логи
       - ./nginx/logs:/var/log/nginx
-    restart: unless-stopped
     networks:
       - ai-net
     healthcheck:
