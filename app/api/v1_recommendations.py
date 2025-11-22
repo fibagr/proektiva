@@ -19,10 +19,9 @@ async def create_recommendations(
         logger.warning("Unauthorized request: wrong X-API-KEY")
         raise HTTPException(status_code=401, detail="Unauthorized")
 
-    logger.info("Received payload for chatId=%s", payload.chatId)
+    #logger.info("Received payload for chatId=%s", payload.chatId)
 
     text = generate_recommendations_text(payload)
-    #text = "Все будет хорошо"
     pdf_bytes = render_text_to_pdf(text)
 
     headers = {
