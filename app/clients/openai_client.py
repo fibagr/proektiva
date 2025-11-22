@@ -6,7 +6,7 @@ client = OpenAI(api_key=settings.openai_api_key)
 
 def chat_completion_ru(prompt: str) -> str:
     completion = client.chat.completions.create(
-        model="gpt-5-mini",
+        model="gpt-4.1-mini",
         messages=[
             {"role": "system", "content": "Ты психолог, даёшь мягкие, практичные рекомендации."},
             {"role": "user", "content": prompt}
