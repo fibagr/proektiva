@@ -54,7 +54,6 @@ class SensoryBlock(BaseModel):
 
 
 class FullSurveyPayload(BaseModel):
-    chatId: int
     language: str = "ru"
     concentration: Optional[ConcentrationBlock] = None
     anxiety: Optional[AnxietyBlock] = None
