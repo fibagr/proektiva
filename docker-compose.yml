@@ -9,8 +9,9 @@ services:
     env_file:
       - .env
     expose:
-      - "8000"            # только внутри docker-сети
-    ports: []
+      - "8000"            
+    ports:
+      - "8000:8000"
     restart: unless-stopped
     networks:
       - ai-net
