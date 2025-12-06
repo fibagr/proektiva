@@ -8,36 +8,36 @@ services:
       dockerfile: Dockerfile
     env_file:
       - .env
-    #expose:
-    #  - "8000"            # только внутри docker-сети
+    expose:
+      - "8000"            # только внутри docker-сети
     ports: []
     restart: unless-stopped
     networks:
       - ai-net
 
-  nginx:
-    container_name: ai-nginx
-    image: nginx:1.27-alpine
-    restart: unless-stopped
-    depends_on:
-      - ai-module
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
+#  nginx:
+#    container_name: ai-nginx
+#    image: nginx:1.27-alpine
+#    restart: unless-stopped
+#    depends_on:
+#      - ai-module
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#    volumes:
       # конфиг nginx
-      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+#      - ./nginx/conf.d:/etc/nginx/conf.d:ro
       # сертификаты
-      - ./nginx/certs:/etc/nginx/certs:ro
+#      - ./nginx/certs:/etc/nginx/certs:ro
       # опционально: логи
       #- ./nginx/logs:/var/log/nginx
-    networks:
-      - ai-net
-    healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost/hc"]
-      interval: 30s
-      timeout: 3s
-      retries: 3    
+#    networks:
+#      - ai-net
+#    healthcheck:
+#      test: ["CMD", "wget", "-qO-", "http://localhost/hc"]
+#      interval: 30s
+#      timeout: 3s
+#      retries: 3    
 
 networks:
   ai-net:
