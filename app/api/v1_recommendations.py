@@ -1,8 +1,10 @@
 from fastapi import APIRouter, Response, Header, HTTPException
 from app.core.config import settings
 from app.domain.models import FullSurveyPayload
-from app.domain.recommender import generate_recommendations_text
-from app.domain.pdf_generator import render_text_to_pdf
+from app.domain.openai_recommender import openai_generate_recommendations_text
+from app.domain.openai_pdf_generator import openai_render_text_to_pdf
+from app.domain.yandex_recommender import yandex_generate_recommendations_text
+from app.domain.yandex_pdf_generator import yandex_render_text_to_pdf
 import logging
 
 router = APIRouter()
@@ -21,8 +23,13 @@ async def create_recommendations(
 
     #logger.info("Received payload for chatId=%s", payload.chatId)
 
-    text = generate_recommendations_text(payload)
-    pdf_bytes = render_text_to_pdf(text)
+    if settings.ai_provider == "openai":
+        text = openai_generate_recommendations_text(payload)
+        pdf_bytes = openai_render_text_to_pdf(text)
+        
+    else: #elif settings.ai_provider == "yandex":
+        text = yandex_generate_recommendations_text(payload)
+        pdf_bytes = yandex_render_text_to_pdf(text,payload)
 
     headers = {
         "Content-Disposition": 'attachment; filename="recommendations.pdf"'

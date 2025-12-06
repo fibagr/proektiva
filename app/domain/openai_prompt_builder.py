@@ -1,7 +1,7 @@
 from app.domain.models import FullSurveyPayload
 
 
-def build_prompt(payload: FullSurveyPayload) -> str:
+def openai_build_prompt(payload: FullSurveyPayload) -> str:
     return f"""
 Ты психолог, работаешь с тревожностью, стрессом, нарушениями сна, вниманием и сенсорной регуляцией.
 

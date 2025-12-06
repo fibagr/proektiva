@@ -4,7 +4,7 @@ from app.core.config import settings
 client = OpenAI(api_key=settings.openai_api_key)
 
 
-def chat_completion_ru(prompt: str) -> str:
+def openai_chat_completion_ru(prompt: str) -> str:
     completion = client.chat.completions.create(
         model="gpt-4.1-mini",
         messages=[
@@ -14,4 +14,9 @@ def chat_completion_ru(prompt: str) -> str:
         temperature=0.5,
         max_tokens=1200
     )
-    return completion.choices[0].message.content
+    content = completion.choices[0].message.content
+
+    if content is None:
+        raise RuntimeError("ChatGPT вернул пустой ответ")
+    
+    return content

@@ -1,9 +1,23 @@
-import os
+from typing import Literal, Optional
+
 from pydantic_settings import BaseSettings
 
+
 class Settings(BaseSettings):
-    openai_api_key: str
-    bot_api_key: str | None = None  # общий секрет с  ботом
+    # --- выбор провайдера ИИ ---
+    ai_provider: Literal["openai", "yandex"] = "openai"
+
+    # --- OpenAI ---
+    openai_api_key: str = ""
+    openai_model: str = "gpt-4.1-mini"
+
+    # --- YandexGPT (Responses API) ---
+    yandex_api_key: Optional[str] = None
+    yandex_folder_id: Optional[str] = None
+    yandex_model: str = "yandexgpt-lite"  # например: yandexgpt-lite, yandexgpt
+
+    # --- прочее, как было ---
+    bot_api_key: str | None = None  # общий секрет с ботом
     app_name: str = "AI Recommendation Module"
     environment: str = "prod"
 

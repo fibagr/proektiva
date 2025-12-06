@@ -17,7 +17,7 @@ def _register_font():
         pdfmetrics.registerFont(TTFont(FONT_NAME, FONT_PATH))
 
 
-def render_text_to_pdf(text: str) -> bytes:
+def openai_render_text_to_pdf(text: str) -> bytes:
     """
     Рендерит текст (в т.ч. русский) в PDF, используя TTF-шрифт с поддержкой кириллицы.
     """
