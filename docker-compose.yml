@@ -41,5 +41,5 @@ services:
       retries: 3    
 
 networks:
-  edge:
-    driver: ai-net
+  ai-net:
+    driver: bridge
