@@ -27,9 +27,11 @@ services:
       - "443:443"
     volumes:
       # конфиг nginx
-      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ~/.nginx/conf.d:/etc/nginx/conf.d:ro
+      #- ./nginx/conf.d:/etc/nginx/conf.d:ro
       # сертификаты
-      - ./nginx/certs:/etc/nginx/certs:ro
+      - ~/letsencrypt:/etc/letsencrypt:ro
+      # - ./nginx/certs:/etc/nginx/certs:ro
       # опционально: логи
       #- ./nginx/logs:/var/log/nginx
     networks:
