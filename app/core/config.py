@@ -12,8 +12,8 @@ class Settings(BaseSettings):
     openai_model: str = "gpt-4.1-mini"
 
     # --- YandexGPT (Responses API) ---
-    yandex_api_key: Optional[str] = None
-    yandex_folder_id: Optional[str] = None
+    yandex_api_key: Optional[str] = "AQVNxIE00HLi5F370J81VKQJwWuLRU0NnyvOUtAo"
+    yandex_folder_id: Optional[str] = "b1gque4j2agui3s9nu35"
     yandex_model: str = "yandexgpt-lite"  # например: yandexgpt-lite, yandexgpt
 
     # --- прочее, как было ---
